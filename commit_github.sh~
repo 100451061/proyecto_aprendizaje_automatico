@@ -1,5 +1,5 @@
 #!/bin/bash
-clear
+
 read -p "Introduce un mensaje de commit: " mensaje
 
 
