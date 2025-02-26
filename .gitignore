@@ -1,0 +1,32 @@
+# Archivos temporales y cachés
+*.tmp
+*.log
+__pycache__/
+*.pyc
+*.pyo
+*.ipynb_checkpoints/
+.DS_Store
+
+
+# Configuración de entornos virtuales
+venv/
+.env
+*.env
+*.pkl
+
+
+#  Archivos específicos de Jupyter Notebooks
+notebooks/.ipynb_checkpoints/
+
+# Archivos de dependencias compiladas
+*.so
+*.dll
+*.dylib
+
+# Archivos con virgulilla (archivos de respaldo de editores)
+*~
+
+# Archivos ocultos de sistemas operativos y editores
+*.swp  # Archivos de swap de Vim
+*.swo
+*.swn
