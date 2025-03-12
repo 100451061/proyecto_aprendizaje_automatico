@@ -1,0 +1,115 @@
+{
+ "cells": [
+  {
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2025-02-26T11:27:14.733942Z",
+     "start_time": "2025-02-26T11:27:14.704456Z"
+    }
+   },
+   "cell_type": "code",
+   "source": [
+    "import pandas as pd\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "print(\"holaa\")\n",
+    "# Definir la semilla (tu NIA)\n",
+    "NIA = 100451061\n",
+    "SEED = NIA % (2 ** 32)\n",
+    "\n",
+    "df = pd.read_csv(\"../data/attrition_availabledata_00.csv.gz\", compression=\"gzip\")"
+   ],
+   "id": "72aab7cf49594ace",
+   "outputs": [],
+   "execution_count": 4
+  },
+  {
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2025-02-26T11:27:16.971Z",
+     "start_time": "2025-02-26T11:27:16.964705Z"
+    }
+   },
+   "cell_type": "code",
+   "source": [
+    "# Definir variable objetivo y características\n",
+    "X = df.drop(columns=[\"Attrition\"])\n",
+    "y = df[\"Attrition\"]\n"
+   ],
+   "id": "f7385aeba21deba2",
+   "outputs": [],
+   "execution_count": 5
+  },
+  {
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2025-02-26T11:27:21.351908Z",
+     "start_time": "2025-02-26T11:27:21.332463Z"
+    }
+   },
+   "cell_type": "code",
+   "source": [
+    "# Dividir en conjunto de entrenamiento (67%) y prueba (33%)\n",
+    "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=SEED, stratify=y)"
+   ],
+   "id": "79f318fe8de4cd99",
+   "outputs": [],
+   "execution_count": 6
+  },
+  {
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2025-02-26T11:27:56.294141Z",
+     "start_time": "2025-02-26T11:27:56.286611Z"
+    }
+   },
+   "cell_type": "code",
+   "source": [
+    "#imprimir\n",
+    "X_train.shape, X_test.shape, y_train.shape, y_test.shape"
+   ],
+   "id": "16ff7c1f6a2fab77",
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "((1969, 30), (971, 30), (1969,), (971,))"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "execution_count": 10
+  },
+  {
+   "metadata": {},
+   "cell_type": "code",
+   "outputs": [],
+   "execution_count": null,
+   "source": "",
+   "id": "54c3e2e1a5d32275"
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
