@@ -259,7 +259,7 @@
    "cell_type": "code",
    "source": [
     "df.isnull().sum()\n",
-    "print(\"Prueba\")"
+    "print(\"Pruebaa\")"
    ],
    "id": "6179742d1e5498e9",
    "outputs": [
