@@ -252,57 +252,26 @@
   {
    "metadata": {
     "ExecuteTime": {
-     "end_time": "2025-03-05T11:29:54.362518Z",
-     "start_time": "2025-03-05T11:29:54.350927Z"
+     "end_time": "2025-03-12T12:08:43.645374Z",
+     "start_time": "2025-03-12T12:08:43.635988Z"
     }
    },
    "cell_type": "code",
-   "source": "df.isnull().sum()",
+   "source": [
+    "df.isnull().sum()\n",
+    "print(\"Prueba\")"
+   ],
    "id": "6179742d1e5498e9",
    "outputs": [
     {
-     "data": {
-      "text/plain": [
-       "hrs                         0\n",
-       "absences                    0\n",
-       "JobInvolvement              0\n",
-       "PerformanceRating           0\n",
-       "EnvironmentSatisfaction    18\n",
-       "JobSatisfaction            13\n",
-       "WorkLifeBalance            23\n",
-       "Age                         0\n",
-       "BusinessTravel              0\n",
-       "Department                  0\n",
-       "DistanceFromHome            0\n",
-       "Education                   0\n",
-       "EducationField              0\n",
-       "EmployeeCount               0\n",
-       "EmployeeID                  0\n",
-       "Gender                      0\n",
-       "JobLevel                    0\n",
-       "JobRole                     0\n",
-       "MaritalStatus               0\n",
-       "MonthlyIncome               0\n",
-       "NumCompaniesWorked         14\n",
-       "Over18                      0\n",
-       "PercentSalaryHike           0\n",
-       "StandardHours               0\n",
-       "StockOptionLevel            0\n",
-       "TotalWorkingYears           7\n",
-       "TrainingTimesLastYear       0\n",
-       "YearsAtCompany              0\n",
-       "YearsSinceLastPromotion     0\n",
-       "YearsWithCurrManager        0\n",
-       "Attrition                   0\n",
-       "dtype: int64"
-      ]
-     },
-     "execution_count": 27,
-     "metadata": {},
-     "output_type": "execute_result"
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Prueba\n"
+     ]
     }
    ],
-   "execution_count": 27
+   "execution_count": 5
   },
   {
    "metadata": {
