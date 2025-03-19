@@ -4,8 +4,8 @@
    "metadata": {
     "id": "a524b3059ef5155c",
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:34:52.340174Z",
-     "start_time": "2025-03-12T12:34:52.302427Z"
+     "end_time": "2025-03-19T11:01:23.854170Z",
+     "start_time": "2025-03-19T11:01:23.805532Z"
     }
    },
    "cell_type": "code",
@@ -18,7 +18,7 @@
    ],
    "id": "a524b3059ef5155c",
    "outputs": [],
-   "execution_count": 10
+   "execution_count": 2
   },
   {
    "metadata": {
@@ -29,8 +29,8 @@
      "height": 325
     },
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:34:52.382668Z",
-     "start_time": "2025-03-12T12:34:52.343340Z"
+     "end_time": "2025-03-19T11:01:26.796345Z",
+     "start_time": "2025-03-19T11:01:26.751538Z"
     }
    },
    "cell_type": "code",
@@ -249,12 +249,12 @@
        "</div>"
       ]
      },
-     "execution_count": 11,
+     "execution_count": 3,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
-   "execution_count": 11
+   "execution_count": 3
   },
   {
    "metadata": {
@@ -265,12 +265,13 @@
      "height": 1000
     },
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:34:52.398454Z",
-     "start_time": "2025-03-12T12:34:52.385879Z"
+     "end_time": "2025-03-19T11:01:31.311133Z",
+     "start_time": "2025-03-19T11:01:31.301125Z"
     }
    },
    "cell_type": "code",
    "source": [
+    "# Ver cantidad de nulos en cada columna\n",
     "df.isnull().sum()"
    ],
    "id": "6179742d1e5498e9",
@@ -312,12 +313,12 @@
        "dtype: int64"
       ]
      },
-     "execution_count": 12,
+     "execution_count": 4,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
-   "execution_count": 12
+   "execution_count": 4
   },
   {
    "metadata": {
@@ -328,19 +329,20 @@
      "height": 334
     },
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:34:52.633199Z",
-     "start_time": "2025-03-12T12:34:52.401503Z"
+     "end_time": "2025-03-19T11:02:46.626986Z",
+     "start_time": "2025-03-19T11:02:46.469397Z"
     }
    },
    "cell_type": "code",
    "source": [
+    "# Gráfico de barras que muestra la distribución de los empleados que dejan la empresa\n",
     "import seaborn as sns\n",
     "import matplotlib.pyplot as plt\n",
     "\n",
     "plt.figure(figsize=(5, 3))\n",
     "sns.countplot(x=df[\"Attrition\"])\n",
     "plt.title(\"Distribución de empleados que dejan la empresa\")\n",
-    "plt.show()\n"
+    "plt.show()"
    ],
    "id": "17b123f948a859a1",
    "outputs": [
@@ -355,7 +357,7 @@
      "output_type": "display_data"
     }
    ],
-   "execution_count": 13
+   "execution_count": 6
   },
   {
    "metadata": {
@@ -365,80 +367,83 @@
      "base_uri": "https://localhost:8080/"
     },
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:34:52.646861Z",
-     "start_time": "2025-03-12T12:34:52.637657Z"
+     "end_time": "2025-03-19T11:03:28.600782Z",
+     "start_time": "2025-03-19T11:03:28.593033Z"
     }
    },
    "cell_type": "code",
    "source": [
-    "print(df.dtypes)"
+    "# Mostrar los tipos de datos de cada columna\n",
+    "df.dtypes"
    ],
    "id": "b0fbb97861b80a91",
    "outputs": [
     {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "hrs                        float64\n",
-      "absences                     int64\n",
-      "JobInvolvement               int64\n",
-      "PerformanceRating            int64\n",
-      "EnvironmentSatisfaction    float64\n",
-      "JobSatisfaction            float64\n",
-      "WorkLifeBalance            float64\n",
-      "Age                          int64\n",
-      "BusinessTravel              object\n",
-      "Department                  object\n",
-      "DistanceFromHome             int64\n",
-      "Education                    int64\n",
-      "EducationField              object\n",
-      "EmployeeCount                int64\n",
-      "EmployeeID                   int64\n",
-      "Gender                      object\n",
-      "JobLevel                     int64\n",
-      "JobRole                     object\n",
-      "MaritalStatus               object\n",
-      "MonthlyIncome                int64\n",
-      "NumCompaniesWorked         float64\n",
-      "Over18                      object\n",
-      "PercentSalaryHike            int64\n",
-      "StandardHours                int64\n",
-      "StockOptionLevel             int64\n",
-      "TotalWorkingYears          float64\n",
-      "TrainingTimesLastYear        int64\n",
-      "YearsAtCompany               int64\n",
-      "YearsSinceLastPromotion      int64\n",
-      "YearsWithCurrManager         int64\n",
-      "Attrition                   object\n",
-      "dtype: object\n"
-     ]
+     "data": {
+      "text/plain": [
+       "hrs                        float64\n",
+       "absences                     int64\n",
+       "JobInvolvement               int64\n",
+       "PerformanceRating            int64\n",
+       "EnvironmentSatisfaction    float64\n",
+       "JobSatisfaction            float64\n",
+       "WorkLifeBalance            float64\n",
+       "Age                          int64\n",
+       "BusinessTravel              object\n",
+       "Department                  object\n",
+       "DistanceFromHome             int64\n",
+       "Education                    int64\n",
+       "EducationField              object\n",
+       "EmployeeCount                int64\n",
+       "EmployeeID                   int64\n",
+       "Gender                      object\n",
+       "JobLevel                     int64\n",
+       "JobRole                     object\n",
+       "MaritalStatus               object\n",
+       "MonthlyIncome                int64\n",
+       "NumCompaniesWorked         float64\n",
+       "Over18                      object\n",
+       "PercentSalaryHike            int64\n",
+       "StandardHours                int64\n",
+       "StockOptionLevel             int64\n",
+       "TotalWorkingYears          float64\n",
+       "TrainingTimesLastYear        int64\n",
+       "YearsAtCompany               int64\n",
+       "YearsSinceLastPromotion      int64\n",
+       "YearsWithCurrManager         int64\n",
+       "Attrition                   object\n",
+       "dtype: object"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
-   "execution_count": 14
+   "execution_count": 8
   },
   {
    "cell_type": "code",
    "source": [
-    "# Convertir canonicos en int\n",
+    "# Convertir variables categóricas en int\n",
     "# Cogemos las columnas que sean de tipo object y por cada columna la convierte en categorica y la cambia a int\n",
-    "df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').apply(lambda x: x.astype('category').cat.codes)"
+    "df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').apply(\n",
+    "    lambda x: x.astype('category').cat.codes)"
    ],
    "metadata": {
     "id": "SQscsAkWCjpa",
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:34:52.679035Z",
-     "start_time": "2025-03-12T12:34:52.650485Z"
+     "end_time": "2025-03-19T11:03:48.057112Z",
+     "start_time": "2025-03-19T11:03:48.046625Z"
     }
    },
    "id": "SQscsAkWCjpa",
    "outputs": [],
-   "execution_count": 15
+   "execution_count": 11
   },
   {
    "cell_type": "code",
-   "source": [
-    "print(df.dtypes)"
-   ],
+   "source": "df.dtypes",
    "metadata": {
     "colab": {
      "base_uri": "https://localhost:8080/"
@@ -446,52 +451,55 @@
     "id": "fcSlUhqqEGqj",
     "outputId": "a8e615e4-5219-4f2d-93ea-ed745bfb0c72",
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:34:52.693464Z",
-     "start_time": "2025-03-12T12:34:52.685082Z"
+     "end_time": "2025-03-19T11:03:45.955039Z",
+     "start_time": "2025-03-19T11:03:45.946412Z"
     }
    },
    "id": "fcSlUhqqEGqj",
    "outputs": [
     {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "hrs                        float64\n",
-      "absences                     int64\n",
-      "JobInvolvement               int64\n",
-      "PerformanceRating            int64\n",
-      "EnvironmentSatisfaction    float64\n",
-      "JobSatisfaction            float64\n",
-      "WorkLifeBalance            float64\n",
-      "Age                          int64\n",
-      "BusinessTravel                int8\n",
-      "Department                    int8\n",
-      "DistanceFromHome             int64\n",
-      "Education                    int64\n",
-      "EducationField                int8\n",
-      "EmployeeCount                int64\n",
-      "EmployeeID                   int64\n",
-      "Gender                        int8\n",
-      "JobLevel                     int64\n",
-      "JobRole                       int8\n",
-      "MaritalStatus                 int8\n",
-      "MonthlyIncome                int64\n",
-      "NumCompaniesWorked         float64\n",
-      "Over18                        int8\n",
-      "PercentSalaryHike            int64\n",
-      "StandardHours                int64\n",
-      "StockOptionLevel             int64\n",
-      "TotalWorkingYears          float64\n",
-      "TrainingTimesLastYear        int64\n",
-      "YearsAtCompany               int64\n",
-      "YearsSinceLastPromotion      int64\n",
-      "YearsWithCurrManager         int64\n",
-      "Attrition                     int8\n",
-      "dtype: object\n"
-     ]
+     "data": {
+      "text/plain": [
+       "hrs                        float64\n",
+       "absences                     int64\n",
+       "JobInvolvement               int64\n",
+       "PerformanceRating            int64\n",
+       "EnvironmentSatisfaction    float64\n",
+       "JobSatisfaction            float64\n",
+       "WorkLifeBalance            float64\n",
+       "Age                          int64\n",
+       "BusinessTravel                int8\n",
+       "Department                    int8\n",
+       "DistanceFromHome             int64\n",
+       "Education                    int64\n",
+       "EducationField                int8\n",
+       "EmployeeCount                int64\n",
+       "EmployeeID                   int64\n",
+       "Gender                        int8\n",
+       "JobLevel                     int64\n",
+       "JobRole                       int8\n",
+       "MaritalStatus                 int8\n",
+       "MonthlyIncome                int64\n",
+       "NumCompaniesWorked         float64\n",
+       "Over18                        int8\n",
+       "PercentSalaryHike            int64\n",
+       "StandardHours                int64\n",
+       "StockOptionLevel             int64\n",
+       "TotalWorkingYears          float64\n",
+       "TrainingTimesLastYear        int64\n",
+       "YearsAtCompany               int64\n",
+       "YearsSinceLastPromotion      int64\n",
+       "YearsWithCurrManager         int64\n",
+       "Attrition                     int8\n",
+       "dtype: object"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
-   "execution_count": 16
+   "execution_count": 10
   },
   {
    "metadata": {
@@ -502,12 +510,13 @@
      "height": 513
     },
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:34:53.733536Z",
-     "start_time": "2025-03-12T12:34:52.697074Z"
+     "end_time": "2025-03-19T11:03:52.300802Z",
+     "start_time": "2025-03-19T11:03:51.508371Z"
     }
    },
    "cell_type": "code",
    "source": [
+    "# Crear y mostrar una matriz de correlación para variables numéricas\n",
     "corr = df.select_dtypes(include=[int, float]).corr()\n",
     "plt.figure(figsize=(10, 6))\n",
     "sns.heatmap(corr, annot=True, cmap=\"coolwarm\", fmt=\".2f\")\n",
@@ -527,25 +536,25 @@
      "output_type": "display_data"
     }
    ],
-   "execution_count": 17
+   "execution_count": 12
   },
   {
    "cell_type": "code",
    "source": [
     "# Eliminamos algunas variables que no tengan ningun tipo de utilidad\n",
     "# Eliminamos una variable si hay dos que son muy similares (PercentSalaryHike y Performance) y (YearsWithCurrManager y Years at the company)\n",
-    "df = df.drop([ \"Over18\",\"EmployeeID\", \"YearsWithCurrManager\",\"PercentSalaryHike\"], axis=1)"
+    "df = df.drop([\"Over18\", \"EmployeeID\", \"YearsWithCurrManager\", \"PercentSalaryHike\"], axis=1)"
    ],
    "metadata": {
     "id": "CVxbvnelCfu6",
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:34:57.431171Z",
-     "start_time": "2025-03-12T12:34:57.423047Z"
+     "end_time": "2025-03-19T11:04:46.522064Z",
+     "start_time": "2025-03-19T11:04:46.510753Z"
     }
    },
    "id": "CVxbvnelCfu6",
    "outputs": [],
-   "execution_count": 18
+   "execution_count": 13
   },
   {
    "cell_type": "code",
@@ -555,13 +564,13 @@
    "metadata": {
     "id": "6Vf-9WNeRE90",
     "ExecuteTime": {
-     "end_time": "2025-03-12T12:35:36.283522Z",
-     "start_time": "2025-03-12T12:35:36.226060Z"
+     "end_time": "2025-03-19T11:04:49.736986Z",
+     "start_time": "2025-03-19T11:04:49.677164Z"
     }
    },
    "id": "6Vf-9WNeRE90",
    "outputs": [],
-   "execution_count": 20
+   "execution_count": 14
   }
  ],
  "metadata": {
