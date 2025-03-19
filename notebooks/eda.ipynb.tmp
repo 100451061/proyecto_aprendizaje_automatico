@@ -4,8 +4,8 @@
    "metadata": {
     "id": "a524b3059ef5155c",
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:01:23.854170Z",
-     "start_time": "2025-03-19T11:01:23.805532Z"
+     "end_time": "2025-03-19T11:21:58.652999Z",
+     "start_time": "2025-03-19T11:21:58.612758Z"
     }
    },
    "cell_type": "code",
@@ -18,7 +18,7 @@
    ],
    "id": "a524b3059ef5155c",
    "outputs": [],
-   "execution_count": 2
+   "execution_count": 55
   },
   {
    "metadata": {
@@ -29,8 +29,8 @@
      "height": 325
     },
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:01:26.796345Z",
-     "start_time": "2025-03-19T11:01:26.751538Z"
+     "end_time": "2025-03-19T11:21:58.708626Z",
+     "start_time": "2025-03-19T11:21:58.685096Z"
     }
    },
    "cell_type": "code",
@@ -249,12 +249,12 @@
        "</div>"
       ]
      },
-     "execution_count": 3,
+     "execution_count": 56,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
-   "execution_count": 3
+   "execution_count": 56
   },
   {
    "metadata": {
@@ -265,13 +265,13 @@
      "height": 1000
     },
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:01:31.311133Z",
-     "start_time": "2025-03-19T11:01:31.301125Z"
+     "end_time": "2025-03-19T11:21:58.726306Z",
+     "start_time": "2025-03-19T11:21:58.716234Z"
     }
    },
    "cell_type": "code",
    "source": [
-    "# Ver cantidad de nulos en cada columna\n",
+    "# Ver cantidad de valores nulos por columna\n",
     "df.isnull().sum()"
    ],
    "id": "6179742d1e5498e9",
@@ -313,12 +313,12 @@
        "dtype: int64"
       ]
      },
-     "execution_count": 4,
+     "execution_count": 57,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
-   "execution_count": 4
+   "execution_count": 57
   },
   {
    "metadata": {
@@ -329,8 +329,8 @@
      "height": 334
     },
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:02:46.626986Z",
-     "start_time": "2025-03-19T11:02:46.469397Z"
+     "end_time": "2025-03-19T11:21:58.890592Z",
+     "start_time": "2025-03-19T11:21:58.750343Z"
     }
    },
    "cell_type": "code",
@@ -357,7 +357,73 @@
      "output_type": "display_data"
     }
    ],
-   "execution_count": 6
+   "execution_count": 58
+  },
+  {
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2025-03-19T11:21:58.905774Z",
+     "start_time": "2025-03-19T11:21:58.894234Z"
+    }
+   },
+   "cell_type": "code",
+   "source": [
+    "# Verificar si el dataset está desbalanceado\n",
+    "attrition_counts = df[\"Attrition\"].value_counts(normalize=True)\n",
+    "print(\"\\n🔹 Distribución de la variable objetivo (Attrition):\")\n",
+    "attrition_counts"
+   ],
+   "id": "1917f20c8985b696",
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "🔹 Distribución de la variable objetivo (Attrition):\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "Attrition\n",
+       "No     0.838776\n",
+       "Yes    0.161224\n",
+       "Name: proportion, dtype: float64"
+      ]
+     },
+     "execution_count": 59,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "execution_count": 59
+  },
+  {
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2025-03-19T11:25:15.832135Z",
+     "start_time": "2025-03-19T11:25:15.823798Z"
+    }
+   },
+   "cell_type": "code",
+   "source": [
+    "if attrition_counts.min() < 0.3:\n",
+    "    print(\"El dataset está DESBALANCEADO. Se recomienda manejar esto en el preprocesamiento.\")\n",
+    "else:\n",
+    "    print(\"El dataset NO está desbalanceado.\")"
+   ],
+   "id": "5393872c64115273",
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "El dataset está DESBALANCEADO. Se recomienda manejar esto en el preprocesamiento.\n"
+     ]
+    }
+   ],
+   "execution_count": 68
   },
   {
    "metadata": {
@@ -367,8 +433,8 @@
      "base_uri": "https://localhost:8080/"
     },
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:03:28.600782Z",
-     "start_time": "2025-03-19T11:03:28.593033Z"
+     "end_time": "2025-03-19T11:21:58.940338Z",
+     "start_time": "2025-03-19T11:21:58.929550Z"
     }
    },
    "cell_type": "code",
@@ -415,31 +481,48 @@
        "dtype: object"
       ]
      },
-     "execution_count": 8,
+     "execution_count": 61,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
-   "execution_count": 8
+   "execution_count": 61
+  },
+  {
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2025-03-19T11:22:03.413951Z",
+     "start_time": "2025-03-19T11:22:03.393987Z"
+    }
+   },
+   "cell_type": "code",
+   "source": [
+    "# Convertir variables categóricas en números\n",
+    "# Usar One-Hot Encoding en lugar de Label Encoding para variables categóricas nominales\n",
+    "df = pd.get_dummies(df, columns=df.select_dtypes(include='object').columns, drop_first=True)"
+   ],
+   "id": "2d154c1dd51c7ebb",
+   "outputs": [],
+   "execution_count": 62
   },
   {
    "cell_type": "code",
    "source": [
     "# Convertir variables categóricas en int\n",
     "# Cogemos las columnas que sean de tipo object y por cada columna la convierte en categorica y la cambia a int\n",
-    "df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').apply(\n",
-    "    lambda x: x.astype('category').cat.codes)"
+    "# df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').apply(\n",
+    "#    lambda x: x.astype('category').cat.codes)"
    ],
    "metadata": {
     "id": "SQscsAkWCjpa",
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:03:48.057112Z",
-     "start_time": "2025-03-19T11:03:48.046625Z"
+     "end_time": "2025-03-19T11:15:33.664247Z",
+     "start_time": "2025-03-19T11:15:33.653698Z"
     }
    },
    "id": "SQscsAkWCjpa",
    "outputs": [],
-   "execution_count": 11
+   "execution_count": 48
   },
   {
    "cell_type": "code",
@@ -451,8 +534,8 @@
     "id": "fcSlUhqqEGqj",
     "outputId": "a8e615e4-5219-4f2d-93ea-ed745bfb0c72",
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:03:45.955039Z",
-     "start_time": "2025-03-19T11:03:45.946412Z"
+     "end_time": "2025-03-19T11:22:17.491589Z",
+     "start_time": "2025-03-19T11:22:17.482565Z"
     }
    },
    "id": "fcSlUhqqEGqj",
@@ -460,46 +543,59 @@
     {
      "data": {
       "text/plain": [
-       "hrs                        float64\n",
-       "absences                     int64\n",
-       "JobInvolvement               int64\n",
-       "PerformanceRating            int64\n",
-       "EnvironmentSatisfaction    float64\n",
-       "JobSatisfaction            float64\n",
-       "WorkLifeBalance            float64\n",
-       "Age                          int64\n",
-       "BusinessTravel                int8\n",
-       "Department                    int8\n",
-       "DistanceFromHome             int64\n",
-       "Education                    int64\n",
-       "EducationField                int8\n",
-       "EmployeeCount                int64\n",
-       "EmployeeID                   int64\n",
-       "Gender                        int8\n",
-       "JobLevel                     int64\n",
-       "JobRole                       int8\n",
-       "MaritalStatus                 int8\n",
-       "MonthlyIncome                int64\n",
-       "NumCompaniesWorked         float64\n",
-       "Over18                        int8\n",
-       "PercentSalaryHike            int64\n",
-       "StandardHours                int64\n",
-       "StockOptionLevel             int64\n",
-       "TotalWorkingYears          float64\n",
-       "TrainingTimesLastYear        int64\n",
-       "YearsAtCompany               int64\n",
-       "YearsSinceLastPromotion      int64\n",
-       "YearsWithCurrManager         int64\n",
-       "Attrition                     int8\n",
+       "hrs                                  float64\n",
+       "absences                               int64\n",
+       "JobInvolvement                         int64\n",
+       "PerformanceRating                      int64\n",
+       "EnvironmentSatisfaction              float64\n",
+       "JobSatisfaction                      float64\n",
+       "WorkLifeBalance                      float64\n",
+       "Age                                    int64\n",
+       "DistanceFromHome                       int64\n",
+       "Education                              int64\n",
+       "EmployeeCount                          int64\n",
+       "EmployeeID                             int64\n",
+       "JobLevel                               int64\n",
+       "MonthlyIncome                          int64\n",
+       "NumCompaniesWorked                   float64\n",
+       "PercentSalaryHike                      int64\n",
+       "StandardHours                          int64\n",
+       "StockOptionLevel                       int64\n",
+       "TotalWorkingYears                    float64\n",
+       "TrainingTimesLastYear                  int64\n",
+       "YearsAtCompany                         int64\n",
+       "YearsSinceLastPromotion                int64\n",
+       "YearsWithCurrManager                   int64\n",
+       "BusinessTravel_Travel_Frequently        bool\n",
+       "BusinessTravel_Travel_Rarely            bool\n",
+       "Department_Research & Development       bool\n",
+       "Department_Sales                        bool\n",
+       "EducationField_Life Sciences            bool\n",
+       "EducationField_Marketing                bool\n",
+       "EducationField_Medical                  bool\n",
+       "EducationField_Other                    bool\n",
+       "EducationField_Technical Degree         bool\n",
+       "Gender_Male                             bool\n",
+       "JobRole_Human Resources                 bool\n",
+       "JobRole_Laboratory Technician           bool\n",
+       "JobRole_Manager                         bool\n",
+       "JobRole_Manufacturing Director          bool\n",
+       "JobRole_Research Director               bool\n",
+       "JobRole_Research Scientist              bool\n",
+       "JobRole_Sales Executive                 bool\n",
+       "JobRole_Sales Representative            bool\n",
+       "MaritalStatus_Married                   bool\n",
+       "MaritalStatus_Single                    bool\n",
+       "Attrition_Yes                           bool\n",
        "dtype: object"
       ]
      },
-     "execution_count": 10,
+     "execution_count": 65,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
-   "execution_count": 10
+   "execution_count": 65
   },
   {
    "metadata": {
@@ -510,8 +606,8 @@
      "height": 513
     },
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:03:52.300802Z",
-     "start_time": "2025-03-19T11:03:51.508371Z"
+     "end_time": "2025-03-19T11:22:27.244165Z",
+     "start_time": "2025-03-19T11:22:26.349541Z"
     }
    },
    "cell_type": "code",
@@ -536,11 +632,12 @@
      "output_type": "display_data"
     }
    ],
-   "execution_count": 12
+   "execution_count": 66
   },
   {
    "cell_type": "code",
    "source": [
+    "# Eliminar variables irrelevantes o altamente correlacionadas, i.e; \n",
     "# Eliminamos algunas variables que no tengan ningun tipo de utilidad\n",
     "# Eliminamos una variable si hay dos que son muy similares (PercentSalaryHike y Performance) y (YearsWithCurrManager y Years at the company)\n",
     "df = df.drop([\"Over18\", \"EmployeeID\", \"YearsWithCurrManager\", \"PercentSalaryHike\"], axis=1)"
@@ -548,29 +645,54 @@
    "metadata": {
     "id": "CVxbvnelCfu6",
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:04:46.522064Z",
-     "start_time": "2025-03-19T11:04:46.510753Z"
+     "end_time": "2025-03-19T11:24:09.489822Z",
+     "start_time": "2025-03-19T11:24:09.419472Z"
     }
    },
    "id": "CVxbvnelCfu6",
-   "outputs": [],
-   "execution_count": 13
+   "outputs": [
+    {
+     "ename": "KeyError",
+     "evalue": "\"['Over18'] not found in axis\"",
+     "output_type": "error",
+     "traceback": [
+      "\u001B[0;31m---------------------------------------------------------------------------\u001B[0m",
+      "\u001B[0;31mKeyError\u001B[0m                                  Traceback (most recent call last)",
+      "Cell \u001B[0;32mIn[67], line 4\u001B[0m\n\u001B[1;32m      1\u001B[0m \u001B[38;5;66;03m# Eliminar variables irrelevantes o altamente correlacionadas, i.e; \u001B[39;00m\n\u001B[1;32m      2\u001B[0m \u001B[38;5;66;03m# Eliminamos algunas variables que no tengan ningun tipo de utilidad\u001B[39;00m\n\u001B[1;32m      3\u001B[0m \u001B[38;5;66;03m# Eliminamos una variable si hay dos que son muy similares (PercentSalaryHike y Performance) y (YearsWithCurrManager y Years at the company)\u001B[39;00m\n\u001B[0;32m----> 4\u001B[0m df \u001B[38;5;241m=\u001B[39m \u001B[43mdf\u001B[49m\u001B[38;5;241;43m.\u001B[39;49m\u001B[43mdrop\u001B[49m\u001B[43m(\u001B[49m\u001B[43m[\u001B[49m\u001B[38;5;124;43m\"\u001B[39;49m\u001B[38;5;124;43mOver18\u001B[39;49m\u001B[38;5;124;43m\"\u001B[39;49m\u001B[43m,\u001B[49m\u001B[43m \u001B[49m\u001B[38;5;124;43m\"\u001B[39;49m\u001B[38;5;124;43mEmployeeID\u001B[39;49m\u001B[38;5;124;43m\"\u001B[39;49m\u001B[43m,\u001B[49m\u001B[43m \u001B[49m\u001B[38;5;124;43m\"\u001B[39;49m\u001B[38;5;124;43mYearsWithCurrManager\u001B[39;49m\u001B[38;5;124;43m\"\u001B[39;49m\u001B[43m,\u001B[49m\u001B[43m \u001B[49m\u001B[38;5;124;43m\"\u001B[39;49m\u001B[38;5;124;43mPercentSalaryHike\u001B[39;49m\u001B[38;5;124;43m\"\u001B[39;49m\u001B[43m]\u001B[49m\u001B[43m,\u001B[49m\u001B[43m \u001B[49m\u001B[43maxis\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[38;5;241;43m1\u001B[39;49m\u001B[43m)\u001B[49m\n",
+      "File \u001B[0;32m~/.local/lib/python3.10/site-packages/pandas/core/frame.py:5581\u001B[0m, in \u001B[0;36mDataFrame.drop\u001B[0;34m(self, labels, axis, index, columns, level, inplace, errors)\u001B[0m\n\u001B[1;32m   5433\u001B[0m \u001B[38;5;28;01mdef\u001B[39;00m \u001B[38;5;21mdrop\u001B[39m(\n\u001B[1;32m   5434\u001B[0m     \u001B[38;5;28mself\u001B[39m,\n\u001B[1;32m   5435\u001B[0m     labels: IndexLabel \u001B[38;5;241m|\u001B[39m \u001B[38;5;28;01mNone\u001B[39;00m \u001B[38;5;241m=\u001B[39m \u001B[38;5;28;01mNone\u001B[39;00m,\n\u001B[0;32m   (...)\u001B[0m\n\u001B[1;32m   5442\u001B[0m     errors: IgnoreRaise \u001B[38;5;241m=\u001B[39m \u001B[38;5;124m\"\u001B[39m\u001B[38;5;124mraise\u001B[39m\u001B[38;5;124m\"\u001B[39m,\n\u001B[1;32m   5443\u001B[0m ) \u001B[38;5;241m-\u001B[39m\u001B[38;5;241m>\u001B[39m DataFrame \u001B[38;5;241m|\u001B[39m \u001B[38;5;28;01mNone\u001B[39;00m:\n\u001B[1;32m   5444\u001B[0m     \u001B[38;5;124;03m\"\"\"\u001B[39;00m\n\u001B[1;32m   5445\u001B[0m \u001B[38;5;124;03m    Drop specified labels from rows or columns.\u001B[39;00m\n\u001B[1;32m   5446\u001B[0m \n\u001B[0;32m   (...)\u001B[0m\n\u001B[1;32m   5579\u001B[0m \u001B[38;5;124;03m            weight  1.0     0.8\u001B[39;00m\n\u001B[1;32m   5580\u001B[0m \u001B[38;5;124;03m    \"\"\"\u001B[39;00m\n\u001B[0;32m-> 5581\u001B[0m     \u001B[38;5;28;01mreturn\u001B[39;00m \u001B[38;5;28;43msuper\u001B[39;49m\u001B[43m(\u001B[49m\u001B[43m)\u001B[49m\u001B[38;5;241;43m.\u001B[39;49m\u001B[43mdrop\u001B[49m\u001B[43m(\u001B[49m\n\u001B[1;32m   5582\u001B[0m \u001B[43m        \u001B[49m\u001B[43mlabels\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43mlabels\u001B[49m\u001B[43m,\u001B[49m\n\u001B[1;32m   5583\u001B[0m \u001B[43m        \u001B[49m\u001B[43maxis\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43maxis\u001B[49m\u001B[43m,\u001B[49m\n\u001B[1;32m   5584\u001B[0m \u001B[43m        \u001B[49m\u001B[43mindex\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43mindex\u001B[49m\u001B[43m,\u001B[49m\n\u001B[1;32m   5585\u001B[0m \u001B[43m        \u001B[49m\u001B[43mcolumns\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43mcolumns\u001B[49m\u001B[43m,\u001B[49m\n\u001B[1;32m   5586\u001B[0m \u001B[43m        \u001B[49m\u001B[43mlevel\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43mlevel\u001B[49m\u001B[43m,\u001B[49m\n\u001B[1;32m   5587\u001B[0m \u001B[43m        \u001B[49m\u001B[43minplace\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43minplace\u001B[49m\u001B[43m,\u001B[49m\n\u001B[1;32m   5588\u001B[0m \u001B[43m        \u001B[49m\u001B[43merrors\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43merrors\u001B[49m\u001B[43m,\u001B[49m\n\u001B[1;32m   5589\u001B[0m \u001B[43m    \u001B[49m\u001B[43m)\u001B[49m\n",
+      "File \u001B[0;32m~/.local/lib/python3.10/site-packages/pandas/core/generic.py:4788\u001B[0m, in \u001B[0;36mNDFrame.drop\u001B[0;34m(self, labels, axis, index, columns, level, inplace, errors)\u001B[0m\n\u001B[1;32m   4786\u001B[0m \u001B[38;5;28;01mfor\u001B[39;00m axis, labels \u001B[38;5;129;01min\u001B[39;00m axes\u001B[38;5;241m.\u001B[39mitems():\n\u001B[1;32m   4787\u001B[0m     \u001B[38;5;28;01mif\u001B[39;00m labels \u001B[38;5;129;01mis\u001B[39;00m \u001B[38;5;129;01mnot\u001B[39;00m \u001B[38;5;28;01mNone\u001B[39;00m:\n\u001B[0;32m-> 4788\u001B[0m         obj \u001B[38;5;241m=\u001B[39m \u001B[43mobj\u001B[49m\u001B[38;5;241;43m.\u001B[39;49m\u001B[43m_drop_axis\u001B[49m\u001B[43m(\u001B[49m\u001B[43mlabels\u001B[49m\u001B[43m,\u001B[49m\u001B[43m \u001B[49m\u001B[43maxis\u001B[49m\u001B[43m,\u001B[49m\u001B[43m \u001B[49m\u001B[43mlevel\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43mlevel\u001B[49m\u001B[43m,\u001B[49m\u001B[43m \u001B[49m\u001B[43merrors\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43merrors\u001B[49m\u001B[43m)\u001B[49m\n\u001B[1;32m   4790\u001B[0m \u001B[38;5;28;01mif\u001B[39;00m inplace:\n\u001B[1;32m   4791\u001B[0m     \u001B[38;5;28mself\u001B[39m\u001B[38;5;241m.\u001B[39m_update_inplace(obj)\n",
+      "File \u001B[0;32m~/.local/lib/python3.10/site-packages/pandas/core/generic.py:4830\u001B[0m, in \u001B[0;36mNDFrame._drop_axis\u001B[0;34m(self, labels, axis, level, errors, only_slice)\u001B[0m\n\u001B[1;32m   4828\u001B[0m         new_axis \u001B[38;5;241m=\u001B[39m axis\u001B[38;5;241m.\u001B[39mdrop(labels, level\u001B[38;5;241m=\u001B[39mlevel, errors\u001B[38;5;241m=\u001B[39merrors)\n\u001B[1;32m   4829\u001B[0m     \u001B[38;5;28;01melse\u001B[39;00m:\n\u001B[0;32m-> 4830\u001B[0m         new_axis \u001B[38;5;241m=\u001B[39m \u001B[43maxis\u001B[49m\u001B[38;5;241;43m.\u001B[39;49m\u001B[43mdrop\u001B[49m\u001B[43m(\u001B[49m\u001B[43mlabels\u001B[49m\u001B[43m,\u001B[49m\u001B[43m \u001B[49m\u001B[43merrors\u001B[49m\u001B[38;5;241;43m=\u001B[39;49m\u001B[43merrors\u001B[49m\u001B[43m)\u001B[49m\n\u001B[1;32m   4831\u001B[0m     indexer \u001B[38;5;241m=\u001B[39m axis\u001B[38;5;241m.\u001B[39mget_indexer(new_axis)\n\u001B[1;32m   4833\u001B[0m \u001B[38;5;66;03m# Case for non-unique axis\u001B[39;00m\n\u001B[1;32m   4834\u001B[0m \u001B[38;5;28;01melse\u001B[39;00m:\n",
+      "File \u001B[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexes/base.py:7070\u001B[0m, in \u001B[0;36mIndex.drop\u001B[0;34m(self, labels, errors)\u001B[0m\n\u001B[1;32m   7068\u001B[0m \u001B[38;5;28;01mif\u001B[39;00m mask\u001B[38;5;241m.\u001B[39many():\n\u001B[1;32m   7069\u001B[0m     \u001B[38;5;28;01mif\u001B[39;00m errors \u001B[38;5;241m!=\u001B[39m \u001B[38;5;124m\"\u001B[39m\u001B[38;5;124mignore\u001B[39m\u001B[38;5;124m\"\u001B[39m:\n\u001B[0;32m-> 7070\u001B[0m         \u001B[38;5;28;01mraise\u001B[39;00m \u001B[38;5;167;01mKeyError\u001B[39;00m(\u001B[38;5;124mf\u001B[39m\u001B[38;5;124m\"\u001B[39m\u001B[38;5;132;01m{\u001B[39;00mlabels[mask]\u001B[38;5;241m.\u001B[39mtolist()\u001B[38;5;132;01m}\u001B[39;00m\u001B[38;5;124m not found in axis\u001B[39m\u001B[38;5;124m\"\u001B[39m)\n\u001B[1;32m   7071\u001B[0m     indexer \u001B[38;5;241m=\u001B[39m indexer[\u001B[38;5;241m~\u001B[39mmask]\n\u001B[1;32m   7072\u001B[0m \u001B[38;5;28;01mreturn\u001B[39;00m \u001B[38;5;28mself\u001B[39m\u001B[38;5;241m.\u001B[39mdelete(indexer)\n",
+      "\u001B[0;31mKeyError\u001B[0m: \"['Over18'] not found in axis\""
+     ]
+    }
+   ],
+   "execution_count": 67
   },
   {
-   "cell_type": "code",
-   "source": [
-    "df.to_csv(\"attrition_availabledata_07.csv\")"
-   ],
    "metadata": {
-    "id": "6Vf-9WNeRE90",
     "ExecuteTime": {
-     "end_time": "2025-03-19T11:04:49.736986Z",
-     "start_time": "2025-03-19T11:04:49.677164Z"
+     "end_time": "2025-03-19T11:17:19.645380Z",
+     "start_time": "2025-03-19T11:17:19.564623Z"
     }
    },
-   "id": "6Vf-9WNeRE90",
-   "outputs": [],
-   "execution_count": 14
+   "cell_type": "code",
+   "source": [
+    "# Guardar dataset preprocesado con un nuevo nombre\n",
+    "df.to_csv(\"../data/attrition_cleaned.csv\", index=False)\n",
+    "print(\"Dataset preprocesado guardado como 'attrition_cleaned.csv'\")"
+   ],
+   "id": "49aded0607acbb93",
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Dataset preprocesado guardado como 'attrition_cleaned.csv'\n"
+     ]
+    }
+   ],
+   "execution_count": 51
   }
  ],
  "metadata": {
