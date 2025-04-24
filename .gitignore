@@ -427,4 +427,7 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+# Entorno virtual
+venv312/
+
 # End of https://www.toptal.com/developers/gitignore/api/python,git,pycharm,pycharm+iml,pycharm+all,jupyternotebooks
